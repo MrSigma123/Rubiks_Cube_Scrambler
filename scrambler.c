@@ -341,6 +341,31 @@ void scramblerTimer(void){
       case 6:
         strcpy(cubeTurn, "R\0");
         printf("%s ", cubeTurn);
+        tmp = net[3][6];
+        net[3][6] = net[5][6];
+        net[5][6] = net[5][8];
+        net[5][8] = net[3][8];
+        net[3][8] = tmp;
+        tmp = net[3][7];
+        net[3][7] = net[4][6];
+        net[4][6] = net[5][7];
+        net[5][7] = net[4][8];
+        net[4][8] = tmp;
+        tmp = net[3][5];
+        net[3][5] = net[6][5];
+        net[6][5] = net[5][9];
+        net[5][9] = net[0][5];
+        net[0][5] = tmp;
+        tmp = net[4][5];
+        net[4][5] = net[7][5];
+        net[7][5] = net[4][9];
+        net[4][9] = net[1][5];
+        net[1][5] = tmp;
+        tmp = net[5][5];
+        net[5][5] = net[8][5];
+        net[8][5] = net[3][9];
+        net[3][9] = net[2][5];
+        net[2][5] = tmp;
         break;
       case 7:
         strcpy(cubeTurn, "R'\0");
