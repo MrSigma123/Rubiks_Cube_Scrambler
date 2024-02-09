@@ -118,7 +118,7 @@ void scramblerTimer(void){
   char tmp;
   int val1 = 0;
   int val2 = 0;
-  int scrambleLength = 25;
+  int scrambleLength = 1; //25
   int turnUContinuations[15] = {3,4,5,6,7,8,9,10,11,12,13,14,15,16,17};
   int turnDContinuations[15] = {0,1,2,6,7,8,9,10,11,12,13,14,15,16,17};
   int turnRContinuations[15] = {0,1,2,3,4,5,9,10,11,12,13,14,15,16,17};
@@ -150,7 +150,7 @@ void scramblerTimer(void){
   printf("Scramble:\n");
   for(i = 0; i < scrambleLength; i++){
     if (i == 0)
-      val1 = rand() % 18;
+      val1 = 12;//val1 = rand() % 18;
     //val2 = rand() % 18;
     //printf("%d ", val1);
     switch (val1){
