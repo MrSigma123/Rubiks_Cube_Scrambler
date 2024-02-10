@@ -21,6 +21,18 @@ int main(void){
   return 0;
 }
 
+void logo(void){
+  printf("  #####    #####           \n");
+  printf(" #     #  #     #   ####   #####     ##    #    #  #####   #       ######  ##### \n");
+  printf(" #        #        #    #  #    #   #  #   ##  ##  #    #  #       #       #    # \n");
+  printf(" #         #####   #       #    #  #    #  # ## #  #####   #       #####   #    # \n");
+  printf(" #              #  #       #####   ######  #    #  #    #  #       #       ##### \n");
+  printf(" #     #  #     #  #    #  #   #   #    #  #    #  #    #  #       #       #   # \n");
+  printf("  #####    #####    ####   #    #  #    #  #    #  #####   ######  ######  #    # \n");
+  getchar();
+  clear();
+}
+
 void clear(void){
   system("clear");
 }
@@ -53,12 +65,6 @@ int menu(int *pointer){
   }
   clear();
   return *pointer;
-}
-
-void logo(void){
-  printf("Here the logo will be stored");
-  getchar();
-  clear();
 }
 
 void printArray(char array[9][12]){
