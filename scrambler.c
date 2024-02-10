@@ -8,7 +8,7 @@ int *mode = &choice;
 void logo(void);
 void clear(void);
 int menu(int *pointer);
-void scramblerTimer(void);
+void scrambler(void);
 void printArray(char array[9][12]);
 
 int main(void){
@@ -49,7 +49,7 @@ int menu(int *pointer){
     }
   }
   if (*pointer == 2){
-    scramblerTimer();
+    scrambler();
   }
   clear();
   return *pointer;
@@ -78,7 +78,7 @@ void printArray(char array[9][12]){
   printf("\033[0m"); // default console color
 }
 
-void scramblerTimer(void){
+void scrambler(void){
   int i;
   char tmp;
   int val1 = 0;
