@@ -8,7 +8,7 @@ int *mode = &choice;
 void logo(void);
 void clear(void);
 int menu(int *pointer);
-void scrambler(void);
+char scrambler(void);
 void printArray(char array[9][12]);
 
 int main(void){
@@ -50,19 +50,23 @@ void clear(void){
 
 int menu(int *pointer){
   char confirm = '0';
+  char flag = '0';
   if (*pointer > 5) // assuming the user won't input negative choices
     printf("There is any action for the choice No.%d\n", *pointer);
-  if (*pointer == -2)
-    printf("Welcome to cube timer with scramble generator!\n");
-  printf("Enter the value corresponding to desired action: ");
-  printf("0 - exit the program\n");
-  printf("1 - 2x2x2 cube scrambler\n");
-  printf("2 - 3x3x3 cube scrambler\n");
-
+  if (*pointer == -2){
+    printf("\n\n\n\n\n\tWelcome to the Rubik's cube scramble generator!\n");
+    printf("\tEnter the value corresponding to desired action: \n\n");
+  }
+  else {
+    printf("\n\n\n\n\n\tEnter the value corresponding to desired action: \n\n");
+  }
+  printf("\t             0 - exit the program\n");
+  printf("\t             1 - scramble the cube\n");
+  printf("\n\t\t\tYour choice: ");
   scanf("%d", &choice);
   if (*pointer == 0){
-    printf("Are you sure you want to quit?\n");
-    printf("Press 'y' to proceed or any key to abort: ");
+    printf("\n\t       Are you sure you want to quit?\n");
+    printf("\t  Press 'y' to proceed or any key to abort: ");
     fflush(stdin);
     scanf("%c", &confirm);
     if (confirm == 'y')
@@ -71,8 +75,10 @@ int menu(int *pointer){
       *pointer = -1; // default value to loop the menu
     }
   }
-  if (*pointer == 2){
-    scrambler();
+  if (*pointer == 1){
+    do {
+      flag = scrambler();
+    } while (flag == '\n');
   }
   clear();
   return *pointer;
@@ -81,13 +87,14 @@ int menu(int *pointer){
 void printArray(char array[9][12]){
   int i, j;
   for (i = 0; i < 9; i++){
+    printf("\t\t    ");
     for (j = 0; j < 12; j++){
-      if (array[i][j] == 'w') {printf("\033[0;37m* "); continue;}
-      if (array[i][j] == 'o') {printf("\033[0;35m* "); continue;}
-      if (array[i][j] == 'g') {printf("\033[0;32m* "); continue;}
-      if (array[i][j] == 'r') {printf("\033[0;31m* "); continue;}
-      if (array[i][j] == 'b') {printf("\033[0;34m* "); continue;}
-      if (array[i][j] == 'y') {printf("\033[0;33m* "); continue;}
+      if (array[i][j] == 'w') {printf("\033[0;37m■ "); continue;}
+      if (array[i][j] == 'o') {printf("\033[0;35m■ "); continue;}
+      if (array[i][j] == 'g') {printf("\033[0;32m■ "); continue;}
+      if (array[i][j] == 'r') {printf("\033[0;31m■ "); continue;}
+      if (array[i][j] == 'b') {printf("\033[0;34m■ "); continue;}
+      if (array[i][j] == 'y') {printf("\033[0;33m■ "); continue;}
       printf("  ");
     }
     printf("\n");
@@ -95,7 +102,7 @@ void printArray(char array[9][12]){
   printf("\033[0m"); // default console color
 }
 
-void scrambler(void){
+char scrambler(void){
   int i;
   char tmp;
   int val1 = 0;
@@ -121,7 +128,7 @@ void scrambler(void){
   char cubeTurn[3];
   srand(time(NULL));
   clear();
-  printf("Scramble:\n");
+  printf("\t\t\tScramble:\n\n  ");
   for(i = 0; i < scrambleLength; i++){
     if (i == 0)
       val1 = rand() % 18; 
@@ -714,5 +721,8 @@ void scrambler(void){
   printf("\n\n");
   printArray(net);
   fflush(stdin);
-  getchar();
+  printf("\n          Press ENTER to generate another scramble or");
+  printf("\n     type 0 and confirm with ENTER to come back to main menu");
+  printf("\n                      Your choice: ");
+  return getchar();
 }
