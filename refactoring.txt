@@ -1,0 +1,5 @@
+Make the program much more readable
+Divide the program into several files:
+ - one .c file with main function
+ - one .h file with functions declarations
+ - one .c file with functions definitions
